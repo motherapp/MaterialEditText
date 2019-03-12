@@ -1362,7 +1362,7 @@ public class MaterialEditText extends AppCompatEditText {
     if (floatingLabelEnabled && !TextUtils.isEmpty(floatingLabelText)) {
       textPaint.setTextSize(floatingLabelTextSize);
       // calculate the text color
-      textPaint.setColor((Integer) focusEvaluator.evaluate(focusFraction * (isEnabled() ? 1 : 0), floatingLabelTextColor != -1 ? floatingLabelTextColor : (baseColor & 0x00ffffff | 0x44000000), primaryColor));
+      textPaint.setColor((Integer) (floatingLabelAlwaysShown ? (floatingLabelTextColor != -1 ? floatingLabelTextColor : baseColor) : (focusEvaluator.evaluate(focusFraction * (isEnabled() ? 1 : 0), floatingLabelTextColor != -1 ? floatingLabelTextColor : (baseColor & 0x00ffffff | 0x44000000), primaryColor))));
 
       // calculate the horizontal position
       float floatingLabelWidth = textPaint.measureText(floatingLabelText.toString());
@@ -1381,7 +1381,7 @@ public class MaterialEditText extends AppCompatEditText {
 
       // calculate the alpha
 //      int alpha = ((int) ((floatingLabelAlwaysShown ? 1 : floatingLabelFraction) * 0xff * (0.74f * focusFraction * (isEnabled() ? 1 : 0) + 0.26f) * (floatingLabelTextColor != -1 ? 1 : Color.alpha(floatingLabelTextColor) / 256f)));
-      int alpha = ((int) ((floatingLabelAlwaysShown ? 1 : floatingLabelFraction) * (0.74f * floatingLabelFraction * (isEnabled() ? 1 : 0) + 0.26f) * (floatingLabelTextColor != -1 ? 0xff : Color.alpha(floatingLabelTextColor))));
+      int alpha = ((int) (floatingLabelAlwaysShown ? 255 : (floatingLabelAlwaysShown ? 1 : floatingLabelFraction) * (0.74f * floatingLabelFraction * (isEnabled() ? 1 : 0) + 0.26f) * (floatingLabelTextColor != -1 ? 0xff : Color.alpha(floatingLabelTextColor))));
       textPaint.setAlpha(alpha);
 
       // draw the floating label
