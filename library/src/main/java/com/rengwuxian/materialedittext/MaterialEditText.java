@@ -1337,11 +1337,11 @@ public class MaterialEditText extends AppCompatEditText {
     float bottomTextPadding = bottomTextSize + textMetrics.ascent + textMetrics.descent;
 
     // draw the characters counter
-    if ((hasFocus() && hasCharactersCounter()) || !isCharactersCountValid()) {
-      textPaint.setColor(isCharactersCountValid() ? (baseColor & 0x00ffffff | 0x44000000) : errorColor);
-      String charactersCounterText = getCharactersCounterText();
-      canvas.drawText(charactersCounterText, isRTL() ? startX : endX - textPaint.measureText(charactersCounterText), lineStartY + bottomSpacing + relativeHeight, textPaint);
-    }
+//    if ((hasFocus() && hasCharactersCounter()) || !isCharactersCountValid()) {
+//      textPaint.setColor(isCharactersCountValid() ? (baseColor & 0x00ffffff | 0x44000000) : errorColor);
+//      String charactersCounterText = getCharactersCounterText();
+//      canvas.drawText(charactersCounterText, isRTL() ? startX : endX - textPaint.measureText(charactersCounterText), lineStartY + bottomSpacing + relativeHeight, textPaint);
+//    }
 
     // draw the bottom text
     if (textLayout != null) {
@@ -1426,7 +1426,8 @@ public class MaterialEditText extends AppCompatEditText {
   }
 
   private int getCharactersCounterWidth() {
-    return hasCharactersCounter() ? (int) textPaint.measureText(getCharactersCounterText()) : 0;
+//    return hasCharactersCounter() ? (int) textPaint.measureText(getCharactersCounterText()) : 0;
+    return 0;
   }
 
   private int getBottomEllipsisWidth() {
